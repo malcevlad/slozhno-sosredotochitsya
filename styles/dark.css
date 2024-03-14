@@ -16,7 +16,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root{
+  :root {
     --background-color: #000028;
     --font-color: #F1B2CE;
     --title-color: #DB00FF;
