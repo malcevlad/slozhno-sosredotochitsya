@@ -55,6 +55,7 @@
 .header__decor::after {
   position: absolute;
   content: "REC";
+  text-transform: uppercase;
   line-height: 1.39;
   color: var(--accent-color-theme);
   inset-block-start: 10px;
@@ -85,7 +86,7 @@
   padding: 0 13px;
   line-height: 1;
   text-transform: lowercase;
-  block-size: 23px;
+  min-block-size: 23px;
 }
 
 .header__theme-menu-button:focus {
@@ -93,7 +94,7 @@
 }
 
 .header__theme-menu-button:focus-visible {
-  border-block-end: 1px solid var(--hover-effect-color);
+  border-block-end: 1px solid var(--accent-color-theme);
 }
 
 .header__theme-menu-button:hover {
@@ -125,15 +126,20 @@
   padding: 40px 10px;
 }
 
-.section-why,
-.section-what,
-.section-how {
+.section {
   display: grid;
   gap: 20px;
+  contain: inline-size;
 }
 
-.section__article-title {
-  margin-block-end: 10px;
+.section__title {
+  color: var(--accent-color-theme);
+}
+
+.section__article {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .section__article-link {
@@ -158,12 +164,16 @@
   color: var(--subtitle-color);
 }
 
-.section-images__container {
+.section-images {
+  gap: 10px;
+}
+
+.section-images__list {
   display: grid;
   gap: 10px;
 }
 
-.section-images__item {
+.section-images__content {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -230,33 +240,30 @@
     gap: 80px;
   }
 
-  .section-why {
-    grid-template-columns: 1fr 2fr;
-  }
-
-  .section-why__title {
-    grid-column: 1/2;
-    grid-row: 1/3;
-  }
-
-  .section-what__title {
-    inline-size: calc(100% / 4);
-  }
-
+  .section-why,
   .section-how {
     grid-template-columns: 1fr 2fr;
   }
 
-  .section-how__title {
+  .section__title {
     grid-column: 1/2;
-    grid-row: 1/7;
+    grid-row: 1/3;
   }
 
-  .section-images .section__article-title {
-    margin-block-end: 20px;
+  .section-why .section__article,
+  .section-how .section__article {
+    grid-column-start: 2;
   }
 
-  .section-images__container {
+  .section-what .section__title {
+    inline-size: calc(100% / 4);
+  }
+
+  .section-images {
+    gap: 20px;
+  }
+
+  .section-images__list {
     gap: 20px;
     grid-template-columns: repeat(3, 1fr);
   }
@@ -285,6 +292,7 @@
     grid-column: 2/4;
     grid-row: 3/4;
   }
+
   .footer {
     justify-content: center;
   }
@@ -303,18 +311,19 @@
 
   .header__theme-menu-list {
     flex-direction: row;
+    gap: 10px;
   }
 
   .section-why,
   .section-how {
-    column-gap: 10px;;
+    column-gap: 10px;
   }
 
   .section-what {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .section-what__title {
+  .section-what .section__title {
     grid-column: 1/4;
     inline-size: calc(100% / 3);
   }
